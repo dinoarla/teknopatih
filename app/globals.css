@@ -1,0 +1,305 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   AIT Brand Design System
+   ============================================================ */
+
+:root {
+  --color-navy-patih: #0A1628;
+  --color-tech-blue: #1E5AA8;
+  --color-teal-intelligence: #0EA5A0;
+  --color-gold-patih: #D4A843;
+  --color-navy-light: #0D1E3A;
+  --color-navy-mid: #112244;
+
+  --gradient-hero: linear-gradient(135deg, #0A1628 0%, #0D1E3A 40%, #112244 100%);
+  --gradient-card: linear-gradient(135deg, rgba(30, 90, 168, 0.08) 0%, rgba(14, 165, 160, 0.05) 100%);
+  --gradient-gold-line: linear-gradient(90deg, transparent, #D4A843, transparent);
+
+  --blur-glass: blur(12px);
+  --radius-card: 16px;
+  --radius-btn: 8px;
+
+  --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-bounce: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ============================================================
+   Base Resets
+   ============================================================ */
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    font-feature-settings: 'kern' 1, 'liga' 1, 'calt' 1;
+  }
+
+  body {
+    background-color: var(--color-navy-patih);
+    color: white;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background-color: rgba(14, 165, 160, 0.3);
+    color: white;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--color-navy-patih);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-tech-blue);
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-teal-intelligence);
+  }
+}
+
+/* ============================================================
+   Component Layer
+   ============================================================ */
+
+@layer components {
+  /* AIT Logo Mark */
+  .ait-logo-mark {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  /* Glass Card */
+  .glass-card {
+    background: rgba(255, 255, 255, 0.03);
+    backdrop-filter: var(--blur-glass);
+    -webkit-backdrop-filter: var(--blur-glass);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: var(--radius-card);
+    transition: all var(--transition-smooth);
+  }
+
+  .glass-card:hover {
+    background: rgba(255, 255, 255, 0.06);
+    border-color: rgba(14, 165, 160, 0.25);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(14, 165, 160, 0.1);
+  }
+
+  /* Gold Line Divider */
+  .gold-line {
+    height: 1px;
+    background: var(--gradient-gold-line);
+    width: 100%;
+    opacity: 0.6;
+  }
+
+  /* Data Node Network Background */
+  .mesh-bg {
+    background: var(--gradient-hero);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .mesh-bg::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--mesh-gradient);
+    pointer-events: none;
+  }
+
+  /* Animated Border Button */
+  .btn-primary {
+    @apply relative inline-flex items-center gap-2 px-8 py-3.5 font-heading font-600 text-sm tracking-wider uppercase overflow-hidden rounded-lg;
+    background: linear-gradient(135deg, var(--color-tech-blue), var(--color-teal-intelligence));
+    transition: all var(--transition-smooth);
+  }
+
+  .btn-primary::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, var(--color-teal-intelligence), var(--color-tech-blue));
+    opacity: 0;
+    transition: opacity var(--transition-smooth);
+  }
+
+  .btn-primary:hover::before {
+    opacity: 1;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(14, 165, 160, 0.4);
+  }
+
+  .btn-primary span {
+    position: relative;
+    z-index: 1;
+  }
+
+  .btn-outline {
+    @apply relative inline-flex items-center gap-2 px-8 py-3.5 font-heading font-600 text-sm tracking-wider uppercase rounded-lg border;
+    border-color: rgba(212, 168, 67, 0.5);
+    color: var(--color-gold-patih);
+    transition: all var(--transition-smooth);
+  }
+
+  .btn-outline:hover {
+    background: rgba(212, 168, 67, 0.1);
+    border-color: var(--color-gold-patih);
+    box-shadow: 0 0 20px rgba(212, 168, 67, 0.2);
+  }
+
+  /* Badge */
+  .tier-badge {
+    @apply inline-flex items-center gap-1.5 px-3 py-1 text-xs font-mono font-500 rounded-full border;
+  }
+
+  /* Section heading */
+  .section-tag {
+    @apply inline-flex items-center gap-2 text-xs font-mono font-500 tracking-widest uppercase;
+    color: var(--color-teal-intelligence);
+  }
+
+  .section-tag::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 1px;
+    background: currentColor;
+  }
+
+  /* Input */
+  .form-input {
+    @apply w-full px-4 py-3 rounded-lg text-sm font-body text-white placeholder-white/30 outline-none transition-all;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+
+  .form-input:focus {
+    background: rgba(255, 255, 255, 0.08);
+    border-color: var(--color-teal-intelligence);
+    box-shadow: 0 0 0 3px rgba(14, 165, 160, 0.15);
+  }
+
+  /* Particle node */
+  .node-dot {
+    @apply absolute rounded-full;
+    animation: pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+}
+
+/* ============================================================
+   Utility Layer
+   ============================================================ */
+
+@layer utilities {
+  .text-gradient-blue {
+    background: linear-gradient(135deg, #5B9AF5, var(--color-teal-intelligence));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .text-gradient-gold {
+    background: linear-gradient(135deg, var(--color-gold-patih), #F0C866);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .font-600 {
+    font-weight: 600;
+  }
+
+  .noise-overlay {
+    position: relative;
+  }
+
+  .noise-overlay::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    opacity: 0.4;
+  }
+
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .hide-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* ============================================================
+   Animations
+   ============================================================ */
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-16px); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(32px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slideIn {
+  from { opacity: 0; transform: translateX(-24px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes countUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes scanLine {
+  0% { transform: translateY(-10px); opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { transform: translateY(100vh); opacity: 0; }
+}
+
+@keyframes drawLine {
+  from { stroke-dashoffset: 1000; }
+  to { stroke-dashoffset: 0; }
+}
+
+@keyframes glowPulse {
+  0%, 100% { box-shadow: 0 0 10px rgba(14, 165, 160, 0.3); }
+  50% { box-shadow: 0 0 30px rgba(14, 165, 160, 0.7); }
+}
+
+.animate-float { animation: float 6s ease-in-out infinite; }
+.animate-fade-up { animation: fadeUp 0.7s ease-out forwards; }
+.animate-slide-in { animation: slideIn 0.5s ease-out forwards; }
+.animate-glow-pulse { animation: glowPulse 2.5s ease-in-out infinite; }
+
+.delay-100 { animation-delay: 0.1s; }
+.delay-200 { animation-delay: 0.2s; }
+.delay-300 { animation-delay: 0.3s; }
+.delay-400 { animation-delay: 0.4s; }
+.delay-500 { animation-delay: 0.5s; }
+.delay-600 { animation-delay: 0.6s; }
+.delay-700 { animation-delay: 0.7s; }
