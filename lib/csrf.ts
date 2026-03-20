@@ -12,11 +12,6 @@ const CSRF_HEADER_NAME = 'x-csrf-token' as const;
 const CSRF_SECRET = process.env.CSRF_SECRET ?? 'ait-dev-secret-change-in-prod-32chars';
 const TOKEN_EXPIRY_MS = 60 * 60 * 1000; // 1 hour
 
-interface CsrfTokenData {
-  readonly token: string;
-  readonly issuedAt: number;
-}
-
 /**
  * Generates a cryptographically secure CSRF token
  * tied to a session-specific HMAC signature.
