@@ -27,9 +27,9 @@ export const BRAND = {
 export const NAV_ITEMS: ReadonlyArray<NavItem> = [
   { label: 'About', href: '/about' },
   { label: 'Divisions', href: '/divisions' },
+  { label: 'Projects', href: '/projects' },
   { label: 'Products', href: '/products' },
   { label: 'Impact', href: '/impact' },
-  { label: 'Contact', href: '/contact' },
 ] as const;
 
 // ============================================================
@@ -157,8 +157,8 @@ export const DIVISIONS: ReadonlyArray<Division> = [
     products: [
       {
         id: 'prod-006',
-        name: 'Arabiya',
-        description: 'Platform belajar bahasa Arab berbasis AI dengan gamifikasi untuk pemula hingga mahir.',
+        name: 'KALIMI',
+        description: 'Platform belajar bahasa Arab untuk anak-anak dengan metode gamifikasi — menyenangkan, interaktif, dan berbasis AI adaptive learning.',
         divisionId: 'div-005',
         type: 'platform',
         status: 'beta',
@@ -221,7 +221,7 @@ export const DIVISIONS: ReadonlyArray<Division> = [
 
 export const STATS: ReadonlyArray<StatCounter> = [
   { label: 'Years Operating', value: 13, suffix: '+' },
-  { label: 'Business Divisions', value: 7, suffix: '' },
+  { label: 'Projects Completed', value: 60, suffix: '+' },
   { label: 'Active Products', value: 8, suffix: '+' },
   { label: 'Cities Reached', value: 12, suffix: '+' },
 ] as const;

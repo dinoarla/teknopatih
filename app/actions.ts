@@ -1,16 +1,34 @@
 'use server';
 
-import { generateCsrfToken, validateCsrfToken, setCsrfCookie } from '@/lib/csrf';
+import { cookies } from 'next/headers';
+import { generateCsrfToken, validateCsrfToken, CSRF_COOKIE_NAME } from '@/lib/csrf';
 import { contactFormSchema, newsletterSchema } from '@/lib/schemas';
-import type { ApiResponse, ContactFormData } from '@/types';
+import type { ApiResponse } from '@/types';
 
 // ============================================================
 // Server Action: Get CSRF Token
+//
+// The cookie is SET by middleware.ts (which runs on the Edge
+// before every request). Here we just READ the existing value.
+// If for some reason it's missing (e.g. first cold start edge
+// case), we generate a fresh token and set it — which IS
+// allowed here because this is a 'use server' function.
 // ============================================================
 
 export async function getCsrfTokenAction(): Promise<string> {
+  const cookieStore = await cookies();
+  const existing = cookieStore.get(CSRF_COOKIE_NAME)?.value;
+  if (existing) return existing;
+
+  // Fallback: generate & set (valid here — this is a Server Action)
   const token = generateCsrfToken();
-  await setCsrfCookie(token);
+  cookieStore.set(CSRF_COOKIE_NAME, token, {
+    httpOnly: true,
+    secure: process.env.NODE_ENV === 'production',
+    sameSite: 'strict',
+    path: '/',
+    maxAge: 60 * 60,
+  });
   return token;
 }
 

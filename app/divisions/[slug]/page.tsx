@@ -114,6 +114,42 @@ export default async function DivisionDetailPage({ params }: PageProps) {
               <h2 className="font-heading font-700 text-2xl text-white mb-8">
                 Products & Services
               </h2>
+
+              {/* SIMBA featured showcase — only for industrial-iot */}
+              {division.slug === 'industrial-iot' && (
+                <div className="mb-8 rounded-2xl overflow-hidden border border-white/10"
+                  style={{ background: 'linear-gradient(135deg,#0e2a5a,#061428)' }}>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-0">
+                    <div className="p-7">
+                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border mb-4"
+                        style={{ background: 'rgba(212,168,67,0.1)', borderColor: 'rgba(212,168,67,0.3)' }}>
+                        <span className="text-[10px] font-mono text-gold-patih">🏆 JUARA 2 LOMBA KARYA INOVASI PLN WKB 2017</span>
+                      </div>
+                      <h3 className="font-heading text-xl text-white mb-1" style={{ fontWeight: 800 }}>SIMBA</h3>
+                      <p className="text-sm font-mono mb-3" style={{ color: '#5B9AF5' }}>Sistem Informasi Bahan Bakar · PLN Kapuas</p>
+                      <p className="text-sm text-white/55 leading-relaxed mb-5">
+                        Platform monitoring BBM real-time untuk 9 pembangkit PLN Sektor Kapuas —
+                        memantau HSD & MFO dengan diagram tangki interaktif dan laporan otomatis.
+                        Diimplementasikan September 2015, versi aktif 1.9.7.
+                      </p>
+                      <div className="flex gap-2 flex-wrap">
+                        {['9 Plants','1.131+ Records','HSD & MFO','Live Since 2015','v1.9.7'].map(t => (
+                          <span key={t} className="text-[10px] font-mono px-2.5 py-1 rounded-full border border-white/10 text-white/40">{t}</span>
+                        ))}
+                      </div>
+                    </div>
+                    <div className="flex flex-col gap-2 p-4 justify-center">
+                      <img src="/products/simba-dashboard.png" alt="SIMBA Dashboard BBM"
+                        className="rounded-xl border border-white/10 w-full object-cover hover:scale-[1.02] transition-transform duration-500"
+                        style={{ height: '130px', objectPosition: 'top' }}/>
+                      <img src="/products/simba-plant.png" alt="SIMBA Plant Diagram"
+                        className="rounded-xl border border-white/10 w-full object-cover hover:scale-[1.02] transition-transform duration-500"
+                        style={{ height: '100px', objectPosition: 'top' }}/>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 {division.products.map((product) => {
                   const status = STATUS_LABELS[product.status];

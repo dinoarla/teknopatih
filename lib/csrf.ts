@@ -6,7 +6,8 @@ import { randomBytes, createHmac, timingSafeEqual } from 'crypto';
 // Single Responsibility: Handles all CSRF operations
 // ============================================================
 
-const CSRF_COOKIE_NAME = '__Host-csrf-token' as const;
+const CSRF_COOKIE_NAME =
+  process.env.NODE_ENV === 'production' ? '__Host-csrf-token' : 'csrf-token';
 const CSRF_HEADER_NAME = 'x-csrf-token' as const;
 const CSRF_SECRET = process.env.CSRF_SECRET ?? 'ait-dev-secret-change-in-prod-32chars';
 const TOKEN_EXPIRY_MS = 60 * 60 * 1000; // 1 hour

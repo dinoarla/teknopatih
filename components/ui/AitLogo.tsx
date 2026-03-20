@@ -2,155 +2,74 @@ import type { FC } from 'react';
 import { cn } from '@/lib/utils';
 
 // ============================================================
-// AIT Logo – Geometric monogram with data nodes
-// Inspired by brand brief: "A" triangle + connected nodes
+// AIT Logo — Kawung Core
+// Mark: /public/logos/ait-mark.png (circle, white bg)
+// Uses <img> tag directly — avoids next/image config issues
 // ============================================================
 
 interface AitLogoProps {
   readonly variant?: 'full' | 'mark-only' | 'text-only';
   readonly size?: 'sm' | 'md' | 'lg' | 'xl';
   readonly className?: string;
-  readonly animate?: boolean;
 }
 
 const sizeConfig = {
-  sm: { mark: 28, textClass: 'text-lg' },
-  md: { mark: 36, textClass: 'text-xl' },
-  lg: { mark: 48, textClass: 'text-2xl' },
-  xl: { mark: 64, textClass: 'text-4xl' },
+  sm: { mark: 30,  gap: 'gap-2',   nameSize: 'text-[13px]' },
+  md: { mark: 42,  gap: 'gap-3',   nameSize: 'text-[15px]' },
+  lg: { mark: 54,  gap: 'gap-4',   nameSize: 'text-[19px]' },
+  xl: { mark: 80,  gap: 'gap-5',   nameSize: 'text-[26px]' },
 } as const;
+
+const LogoMark: FC<{ size: number }> = ({ size: S }) => (
+  /* eslint-disable-next-line @next/next/no-img-element */
+  <img
+    src="/logos/ait-mark.svg"
+    alt="AIT Group"
+    width={S}
+    height={S}
+    style={{ width: S, height: S, objectFit: 'contain', display: 'block' }}
+  />
+);
+
+const LogoText: FC<{ nameSize: string }> = ({ nameSize }) => (
+  <div className="flex flex-col leading-none">
+    <div
+      className={cn('font-heading whitespace-nowrap leading-none', nameSize)}
+      style={{ fontWeight: 800, color: 'white' }}
+    >
+      <span style={{ color: '#00C8E8' }}>Arla </span>
+      <span>Industri Teknopatih</span>
+    </div>
+  </div>
+);
 
 export const AitLogo: FC<AitLogoProps> = ({
   variant = 'full',
   size = 'md',
   className,
-  animate = false,
 }) => {
-  const { mark, textClass } = sizeConfig[size];
+  const { mark, gap, nameSize } = sizeConfig[size];
 
-  const LogoMark = () => (
-    <svg
-      width={mark}
-      height={mark}
-      viewBox="0 0 64 64"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      aria-hidden="true"
-    >
-      {/* Outer ring */}
-      <circle
-        cx="32"
-        cy="32"
-        r="30"
-        stroke="url(#ringGrad)"
-        strokeWidth="1.5"
-        opacity="0.6"
-      />
-
-      {/* "A" triangle — primary letterform */}
-      <path
-        d="M32 10 L52 52 L12 52 Z"
-        fill="none"
-        stroke="url(#aGrad)"
-        strokeWidth="2.5"
-        strokeLinejoin="round"
-        strokeLinecap="round"
-      />
-
-      {/* "A" crossbar */}
-      <line
-        x1="20"
-        y1="40"
-        x2="44"
-        y2="40"
-        stroke="url(#aGrad)"
-        strokeWidth="2"
-        strokeLinecap="round"
-      />
-
-      {/* "I" vertical — central element */}
-      <line
-        x1="32"
-        y1="36"
-        x2="32"
-        y2="52"
-        stroke="#0EA5A0"
-        strokeWidth="2.5"
-        strokeLinecap="round"
-      />
-
-      {/* Data node: apex */}
-      <circle cx="32" cy="10" r="3" fill="#D4A843" className={animate ? 'animate-pulse-slow' : ''} />
-
-      {/* Data node: bottom-left */}
-      <circle cx="12" cy="52" r="2.5" fill="#1E5AA8" />
-
-      {/* Data node: bottom-right */}
-      <circle cx="52" cy="52" r="2.5" fill="#1E5AA8" />
-
-      {/* Data node: crossbar intersections */}
-      <circle cx="22" cy="40" r="2" fill="#0EA5A0" opacity="0.8" />
-      <circle cx="42" cy="40" r="2" fill="#0EA5A0" opacity="0.8" />
-
-      {/* Connection lines to outer ring */}
-      <line x1="32" y1="10" x2="32" y2="3" stroke="#D4A843" strokeWidth="1" opacity="0.5" strokeLinecap="round" />
-      <line x1="12" y1="52" x2="5" y2="57" stroke="#1E5AA8" strokeWidth="1" opacity="0.4" strokeLinecap="round" />
-      <line x1="52" y1="52" x2="59" y2="57" stroke="#1E5AA8" strokeWidth="1" opacity="0.4" strokeLinecap="round" />
-
-      {/* Gradients */}
-      <defs>
-        <linearGradient id="aGrad" x1="12" y1="10" x2="52" y2="52" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#5B9AF5" />
-          <stop offset="100%" stopColor="#0EA5A0" />
-        </linearGradient>
-        <linearGradient id="ringGrad" x1="0" y1="0" x2="64" y2="64" gradientUnits="userSpaceOnUse">
-          <stop offset="0%" stopColor="#1E5AA8" stopOpacity="0.8" />
-          <stop offset="50%" stopColor="#0EA5A0" stopOpacity="0.5" />
-          <stop offset="100%" stopColor="#D4A843" stopOpacity="0.6" />
-        </linearGradient>
-      </defs>
-    </svg>
-  );
-
-  const LogoText = () => (
-    <div className="flex flex-col leading-none">
-      <span
-        className={cn(
-          'font-heading font-800 tracking-[0.05em] text-white',
-          textClass
-        )}
-      >
-        AIT
-        <span className="text-teal-intelligence">.</span>
-      </span>
-      {size !== 'sm' && (
-        <span className="text-[9px] font-mono tracking-[0.2em] text-white/40 uppercase mt-0.5">
-          Group
-        </span>
-      )}
+  if (variant === 'mark-only') return (
+    <div className={cn('inline-flex', className)} role="img" aria-label="AIT Group">
+      <LogoMark size={mark} />
     </div>
   );
 
-  if (variant === 'mark-only') {
-    return (
-      <div className={cn('flex items-center', className)} role="img" aria-label="AIT Group logo">
-        <LogoMark />
-      </div>
-    );
-  }
-
-  if (variant === 'text-only') {
-    return (
-      <div className={cn('flex items-center', className)}>
-        <LogoText />
-      </div>
-    );
-  }
+  if (variant === 'text-only') return (
+    <div className={cn('inline-flex', className)}>
+      <LogoText nameSize={nameSize} />
+    </div>
+  );
 
   return (
-    <div className={cn('flex items-center gap-3', className)} role="img" aria-label="AIT Group logo">
-      <LogoMark />
-      <LogoText />
+    <div
+      className={cn('inline-flex items-center', gap, className)}
+      role="img"
+      aria-label="Arla Industri Teknopatih"
+    >
+      <LogoMark size={mark} />
+      <LogoText nameSize={nameSize} />
     </div>
   );
 };

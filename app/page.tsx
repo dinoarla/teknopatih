@@ -4,7 +4,9 @@ import { Footer } from '@/components/layout/Footer';
 import { HeroSection } from '@/components/sections/HeroSection';
 import { StatsSection } from '@/components/sections/StatsSection';
 import { DivisionsSection } from '@/components/sections/DivisionsSection';
+import { TrustedBySection } from '@/components/sections/TrustedBySection';
 import { TimelineSection } from '@/components/sections/TimelineSection';
+import { FoundersSection } from '@/components/sections/FoundersSection';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { getCsrfTokenAction } from '@/app/actions';
 
@@ -28,7 +30,9 @@ export default async function HomePage() {
         <HeroSection />
         <StatsSection />
         <DivisionsSection />
+        <TrustedBySection />
         <TimelineSection />
+        <FoundersSection />
         <ContactSection csrfToken={csrfToken} />
       </main>
       <Footer csrfToken={csrfToken} />

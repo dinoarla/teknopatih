@@ -38,23 +38,25 @@ export const metadata: Metadata = {
   description:
     'Arla Industri Teknopatih (AIT Group) — Holding company teknologi terdepan dari Pontianak yang mengubah data menjadi keputusan cerdas untuk 7 industri.',
   keywords: [
-    'AIT Group',
-    'Arla Industri Teknopatih',
-    'AI Driven',
-    'IoT',
-    'Data Intelligence',
-    'Pontianak',
-    'Kalimantan Barat',
-    'Teknologi Indonesia',
+    'AIT Group', 'Arla Industri Teknopatih', 'AI Driven',
+    'IoT', 'Data Intelligence', 'Pontianak', 'Kalimantan Barat', 'Teknologi Indonesia',
   ],
   authors: [{ name: 'AIT Group', url: 'https://ait.co.id' }],
   creator: 'AIT Group',
+  icons: {
+    icon: [
+      { url: '/favicon.svg', type: 'image/svg+xml' },
+      { url: '/logos/ait-mark.svg', type: 'image/svg+xml' },
+    ],
+    apple: '/logos/ait-mark.svg',
+    shortcut: '/logos/ait-mark.svg',
+  },
   openGraph: {
     type: 'website',
     locale: 'id_ID',
     url: 'https://ait.co.id',
     title: 'AIT Group — AI Driven Data Decision Company',
-    description: 'Holding company teknologi dari Pontianak dengan 7 divisi aktif dan produk IoT, Data Intelligence, hingga EduTech.',
+    description: 'Holding company teknologi dari Pontianak dengan 7 divisi aktif.',
     siteName: 'AIT Group',
   },
   robots: {

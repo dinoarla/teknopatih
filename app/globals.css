@@ -32,7 +32,7 @@
 
 @layer base {
   * {
-    @apply border-border;
+    box-sizing: border-box;
   }
 
   html {
@@ -124,7 +124,8 @@
 
   /* Animated Border Button */
   .btn-primary {
-    @apply relative inline-flex items-center gap-2 px-8 py-3.5 font-heading font-600 text-sm tracking-wider uppercase overflow-hidden rounded-lg;
+    @apply relative inline-flex items-center gap-2 px-8 py-3.5 font-heading text-sm tracking-wider uppercase overflow-hidden rounded-lg;
+    font-weight: 600;
     background: linear-gradient(135deg, var(--color-tech-blue), var(--color-teal-intelligence));
     transition: all var(--transition-smooth);
   }
@@ -153,7 +154,8 @@
   }
 
   .btn-outline {
-    @apply relative inline-flex items-center gap-2 px-8 py-3.5 font-heading font-600 text-sm tracking-wider uppercase rounded-lg border;
+    @apply relative inline-flex items-center gap-2 px-8 py-3.5 font-heading text-sm tracking-wider uppercase rounded-lg border;
+    font-weight: 600;
     border-color: rgba(212, 168, 67, 0.5);
     color: var(--color-gold-patih);
     transition: all var(--transition-smooth);
@@ -167,12 +169,14 @@
 
   /* Badge */
   .tier-badge {
-    @apply inline-flex items-center gap-1.5 px-3 py-1 text-xs font-mono font-500 rounded-full border;
+    @apply inline-flex items-center gap-1.5 px-3 py-1 text-xs font-mono rounded-full border;
+    font-weight: 500;
   }
 
   /* Section heading */
   .section-tag {
-    @apply inline-flex items-center gap-2 text-xs font-mono font-500 tracking-widest uppercase;
+    @apply inline-flex items-center gap-2 text-xs font-mono tracking-widest uppercase;
+    font-weight: 500;
     color: var(--color-teal-intelligence);
   }
 
@@ -223,9 +227,10 @@
     background-clip: text;
   }
 
-  .font-600 {
-    font-weight: 600;
-  }
+  .font-500 { font-weight: 500; }
+  .font-600 { font-weight: 600; }
+  .font-700 { font-weight: 700; }
+  .font-800 { font-weight: 800; }
 
   .noise-overlay {
     position: relative;
@@ -299,6 +304,7 @@
 .delay-100 { animation-delay: 0.1s; }
 .delay-200 { animation-delay: 0.2s; }
 .delay-300 { animation-delay: 0.3s; }
+.delay-350 { animation-delay: 0.35s; }
 .delay-400 { animation-delay: 0.4s; }
 .delay-500 { animation-delay: 0.5s; }
 .delay-600 { animation-delay: 0.6s; }

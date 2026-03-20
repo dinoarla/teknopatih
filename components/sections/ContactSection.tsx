@@ -249,8 +249,12 @@ export function ContactSection({ csrfToken }: ContactSectionProps) {
               Together
             </h2>
             <p className="text-white/50 leading-relaxed mb-10">
-              Kami terbuka untuk diskusi tentang IoT, data analytics, kolaborasi bisnis,
-              atau sekadar salam dari sesama builder.
+              Dengan <span className="text-white/80" style={{ fontWeight: 600 }}>60+ proyek</span> sejak
+              2013 — dari IoT pembangkit listrik, platform data AI, aplikasi pemerintah, hingga e-commerce —
+              kami siap mendiskusikan kebutuhan Anda berikutnya.{' '}
+              <a href="/projects" className="text-teal-intelligence hover:underline transition-colors">
+                Lihat portofolio lengkap →
+              </a>
             </p>
 
             {/* Contact details */}

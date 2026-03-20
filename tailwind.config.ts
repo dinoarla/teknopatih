@@ -61,6 +61,12 @@ const config: Config = {
       backdropBlur: {
         xs: '2px',
       },
+      fontWeight: {
+        '500': '500',
+        '600': '600',
+        '700': '700',
+        '800': '800',
+      },
       boxShadow: {
         'glow-blue': '0 0 30px rgba(30, 90, 168, 0.4)',
         'glow-teal': '0 0 30px rgba(14, 165, 160, 0.4)',

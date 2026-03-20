@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { Navbar } from '@/components/layout/Navbar';
 import { Footer } from '@/components/layout/Footer';
+import { FoundersSection } from '@/components/sections/FoundersSection';
 import { BRAND } from '@/lib/data';
 import { getCsrfTokenAction } from '@/app/actions';
 
@@ -141,6 +142,8 @@ export default async function AboutPage() {
             </p>
           </div>
         </section>
+
+        <FoundersSection />
       </main>
       <Footer csrfToken={csrfToken} />
     </>
