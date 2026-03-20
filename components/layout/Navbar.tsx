@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Menu, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import { AitLogo } from '@/components/ui/AitLogo';
 import { NAV_ITEMS } from '@/lib/data';
 import { cn } from '@/lib/utils';
