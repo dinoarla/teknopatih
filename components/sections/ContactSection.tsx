@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { submitContactForm } from '@/app/actions';
 import { DIVISIONS } from '@/lib/data';
 import { cn } from '@/lib/utils';

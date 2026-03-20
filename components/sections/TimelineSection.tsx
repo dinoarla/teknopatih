@@ -2,7 +2,6 @@
 
 import { useRef, useEffect, useState, useCallback } from 'react';
 import { TIMELINE } from '@/lib/data';
-import { cn } from '@/lib/utils';
 
 // ============================================================
 // Solar System Timeline

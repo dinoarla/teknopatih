@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { ArrowUpRight, Cpu, BarChart2, Video, Utensils, GraduationCap, Heart, MapPin } from 'lucide-react';
 import { DIVISIONS } from '@/lib/data';
-import { cn, getDivisionColorVariant } from '@/lib/utils';
+import { cn } from '@/lib/utils';
 import type { Division } from '@/types';
 
 const ICON_MAP: Readonly<Record<string, React.ComponentType<{ size?: number; className?: string }>>> = {

@@ -2,7 +2,7 @@
 
 import { useState, useMemo } from 'react';
 import Link from 'next/link';
-import { PROJECTS, PROJECT_CATEGORIES, type ProjectCategory } from '@/lib/projects';
+import { PROJECTS, PROJECT_CATEGORIES } from '@/lib/projects';
 import { cn } from '@/lib/utils';
 import { Search, ArrowRight, Mail } from 'lucide-react';
 

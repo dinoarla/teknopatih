@@ -1,7 +1,6 @@
 'use client';
 
 import { useRef, useEffect, useState } from 'react';
-import { cn } from '@/lib/utils';
 
 // ============================================================
 // Founders Section

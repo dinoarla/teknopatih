@@ -1,6 +1,5 @@
 'use client';
 
-import { PROJECTS } from '@/lib/projects';
 
 // ============================================================
 // Trusted By Section — premium client logos (SVG inline)
