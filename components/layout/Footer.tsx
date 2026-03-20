@@ -6,7 +6,7 @@ import { AitLogo } from '@/components/ui/AitLogo';
 import { BRAND, DIVISIONS } from '@/lib/data';
 import { subscribeNewsletter } from '@/app/actions';
 import { cn } from '@/lib/utils';
-import { ArrowRight, MapPin, Mail, Phone } from 'lucide-react';
+import { ArrowRight, MapPin, Mail } from 'lucide-react';
 
 // ============================================================
 // Footer – ISP: separated into sub-components
